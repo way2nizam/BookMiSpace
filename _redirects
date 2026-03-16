@@ -1,1 +1,2 @@
+/maintenance/*   /maintenance/:splat   200
 /*   /maintenance/index.html   200
