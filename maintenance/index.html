@@ -1,0 +1,155 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Maintenance Mode | BookMiSpace</title>
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap"
+      rel="stylesheet"
+    />
+
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Poppins", sans-serif;
+      }
+
+      body {
+        height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: linear-gradient(135deg, #667eea, #764ba2);
+        color: white;
+        text-align: center;
+        padding: 20px;
+      }
+
+      .container {
+        max-width: 500px;
+        background: rgba(255, 255, 255, 0.08);
+        backdrop-filter: blur(10px);
+        padding: 40px;
+        border-radius: 16px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+      }
+
+      h1 {
+        font-size: 32px;
+        margin-bottom: 10px;
+      }
+
+      p {
+        font-size: 16px;
+        opacity: 0.9;
+        margin-bottom: 25px;
+      }
+
+      .icon {
+        font-size: 60px;
+        margin-bottom: 15px;
+      }
+
+      .timer {
+        display: flex;
+        justify-content: center;
+        gap: 15px;
+        margin-top: 20px;
+        flex-wrap: wrap;
+      }
+
+      .box {
+        background: rgba(255, 255, 255, 0.15);
+        padding: 12px 16px;
+        border-radius: 8px;
+        min-width: 70px;
+      }
+
+      .box span {
+        display: block;
+        font-size: 24px;
+        font-weight: 600;
+      }
+
+      .label {
+        font-size: 12px;
+        opacity: 0.8;
+      }
+
+      @media (max-width: 480px) {
+        h1 {
+          font-size: 26px;
+        }
+
+        .container {
+          padding: 30px 20px;
+        }
+
+        .timer {
+          gap: 8px;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="container">
+      <div class="icon">🚧</div>
+
+      <h1>Website Under Maintenance</h1>
+
+      <p>
+        We are improving the website to serve you better.<br />
+        Please check back shortly.
+      </p>
+
+      <div class="timer">
+        <div class="box">
+          <span id="days">00</span>
+          <div class="label">Days</div>
+        </div>
+
+        <div class="box">
+          <span id="hours">00</span>
+          <div class="label">Hours</div>
+        </div>
+
+        <div class="box">
+          <span id="minutes">00</span>
+          <div class="label">Minutes</div>
+        </div>
+
+        <div class="box">
+          <span id="seconds">00</span>
+          <div class="label">Seconds</div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      let totalSeconds = 900000; // set your countdown time
+
+      function updateTimer() {
+        const days = Math.floor(totalSeconds / 86400);
+        const hours = Math.floor((totalSeconds % 86400) / 3600);
+        const minutes = Math.floor((totalSeconds % 3600) / 60);
+        const seconds = totalSeconds % 60;
+
+        document.getElementById("days").innerText = days;
+        document.getElementById("hours").innerText = hours;
+        document.getElementById("minutes").innerText = minutes;
+        document.getElementById("seconds").innerText = seconds;
+
+        if (totalSeconds > 0) {
+          totalSeconds--;
+        }
+      }
+
+      setInterval(updateTimer, 1000);
+    </script>
+  </body>
+</html>
